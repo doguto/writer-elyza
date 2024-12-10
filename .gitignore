@@ -169,6 +169,9 @@ cython_debug/
 
 
 
+# Environmental Variables
+environmental-variables.txt
+
 # venv
 writer-elyza/
 
