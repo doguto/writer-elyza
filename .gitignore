@@ -170,13 +170,13 @@ cython_debug/
 
 
 # Environmental Variables
-environmental-variables.txt
+environmental_variables.py
 
 # venv
 writer-elyza/
 
 # elyza model folder
-elyza-models
+elyza-models/
 
 # actual works generaterd by elyza
 works/actual/
