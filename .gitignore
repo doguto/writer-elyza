@@ -180,3 +180,8 @@ elyza-models/
 
 # actual works generaterd by elyza
 works/actual/
+
+# .cs scripts
+src/webOperationCS/
+src/webOperationCS/obj/
+src/webOperationCS/bin/
