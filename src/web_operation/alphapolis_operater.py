@@ -6,7 +6,7 @@ sys.path.append('../../')
 import environmental_variables as ev
 
 
-class AlphapolisOperater():
+class AlphapolisOperaterPy():
     def __init__(self):
         self.driver = webdriver.Chrome()
 
