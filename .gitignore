@@ -177,3 +177,6 @@ writer-elyza/
 
 # elyza model folder
 elyza-models
+
+# actual works generaterd by elyza
+works/actual/
