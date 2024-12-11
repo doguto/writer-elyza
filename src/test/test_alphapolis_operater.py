@@ -1,9 +1,9 @@
 import sys
 sys.path.append('../')
-from web_operation.alphapolis_operater import AlphapolisOperater
+from web_operation_py.alphapolis_operater import AlphapolisOperaterPy
 
 def test():
-    operater = AlphapolisOperater()
+    operater = AlphapolisOperaterPy()
     operater.login()
 
 

@@ -6,7 +6,7 @@ from writer.writer import Writer
 def test():
 
     writer = Writer()
-    writer.save_story(title='test',story_number=1,text='hogehoge\nfugafuga')
+    writer.save_test_story(title='test2',story_number=2,text='hogehogehoge\nfugafuga')
 
 
 if __name__ == '__main__':

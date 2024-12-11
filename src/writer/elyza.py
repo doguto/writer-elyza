@@ -1,5 +1,6 @@
 from llama_cpp import Llama
 
+
 class Elyza():
     def __init__(self):
         self.llm = Llama(
@@ -8,12 +9,13 @@ class Elyza():
             n_ctx=1024,  # コンテキストの長さ
         )
     
+
     def get_responce(self, input:str):
         response = self.llm.create_chat_completion(
             messages=[
                 {
                     "role": "system",
-                    "content": "あなたは誠実で優秀な日本人のアシスタントです。特に指示が無い場合は、常に日本語で回答してください。",
+                    "content": "あなたは日本人のネット小説家です。条件に適するネット小説を作成してください。",
                 },
                 {
                     "role": "user",
@@ -27,6 +29,7 @@ class Elyza():
         print(response["choices"][0]["message"]["content"])
 
 
+
 if __name__ == '__main__':
     elyza = Elyza()
-    elyza.get_responce("カワウソについて、教えてください。")
+    elyza.get_responce("以下の要素を持つネット小説のプロットを25話分作成してください。「ゲーム転生、なろう系、男主人公=モブ、剣と魔法」") # Test
