@@ -22,7 +22,7 @@ class Novel():
             # 0: no regulation  # 1: R-15  # 2: R-18
             self.regulation = 0
 
-            self.tag:str = []
+            self.tags:list[str] = []
 
 
     class StoryInfo():
