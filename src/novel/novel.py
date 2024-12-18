@@ -24,6 +24,8 @@ class Novel():
 
             self.tags:list[str] = []
 
+            self.isPublished:bool = False
+
 
     class StoryInfo():
         def __init__(self):

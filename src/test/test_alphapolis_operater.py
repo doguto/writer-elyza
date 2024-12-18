@@ -16,6 +16,9 @@ def test():
 
     operater.make_new_works(novelBasicInfo=info)
 
+    operater.back_to_home()
+    operater.move_to_edit_page(novelBasicInfo=info)
+
 
 if __name__ == '__main__':
     test()

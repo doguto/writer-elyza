@@ -60,3 +60,30 @@ class AlphapolisOperaterPy():
 
         # create novel
         self.driver.find_element(By.XPATH, '//*[@id="NovelMypageSaveForm"]/div[11]/div/input').click() 
+
+
+    def back_to_home(self):
+        self.driver.find_element(By.XPATH, '//*[@id="navbar"]/div/div[2]/div[3]/a').click()
+
+
+    def move_to_edit_page(self, novelBasicInfo:Novel.BasicInfo):
+        if novelBasicInfo.isPublished:
+            titleElement = self.driver.find_element(By.LINK_TEXT, novelBasicInfo.title)
+            titleElement
+
+        for i in range(2, 100):  # 100 is only large number
+            titleElement = self.driver.find_element(By.XPATH, f'//*[@id="main"]/div[3]/div[{i}]/div[3]/div[1]/h2')
+            print(titleElement.text)
+            if not titleElement.text == novelBasicInfo.title:
+                continue
+            
+            self.driver.find_element(By.XPATH, f'//*[@id="main"]/div[3]/div[{i}]/div[3]/div[2]/div[1]/a').click()
+            break
+
+
+        # //*[@id="main"]/div[3]/div[2]/div[3]/div[2]/div[1]/a
+        # //*[@id="main"]/div[3]/div[2]/div[3]/div[1]/h2/a
+        # //*[@id="main"]/div[3]/div[3]/div[3]/div[2]/div[1]/a
+
+        # //*[@id="main"]/div[3]/div[13]/div[3]/div[1]/h2
+        
