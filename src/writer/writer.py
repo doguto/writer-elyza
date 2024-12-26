@@ -1,7 +1,14 @@
 import os
+import sys
+sys.path.append('../')
+from writer.elyza import Elyza
+from novel.novel import Novel
 
 
 class Writer():
+    elyza:Elyza
+    novels:list[Novel]
+
     def __init__(self):
         pass
 
@@ -21,3 +28,13 @@ class Writer():
 
         with open(title_dir + str(story_number) + '.txt', mode='w') as f:
             f.write(text)
+
+
+    def make_new_novel(self):
+        category:int
+        title = self.elyza.generate_title()
+        newNovel = Novel(title=title)
+        newNovel.basicInfo.description = self.elyza.generate_description(newNovel.basicInfo.title)
+
+
+

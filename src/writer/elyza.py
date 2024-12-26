@@ -1,4 +1,5 @@
 from llama_cpp import Llama
+import writer.prompts as pr
 
 
 class Elyza():
@@ -10,12 +11,13 @@ class Elyza():
         )
     
 
-    def get_responce(self, input:str):
+    def get_responce(self, input:str) ->str:
+        print(input)
         response = self.llm.create_chat_completion(
             messages=[
                 {
                     "role": "system",
-                    "content": "あなたは日本人のネット小説家です。条件に適するネット小説を作成してください。",
+                    "content": "あなたは日本語のネット小説生成AIです。",
                 },
                 {
                     "role": "user",
@@ -24,12 +26,26 @@ class Elyza():
             ],
             max_tokens=1024,  # 最大トークン数
         )
-        
-        # 結果の出力
-        print(response["choices"][0]["message"]["content"])
+        return response["choices"][0]["message"]["content"]  
+
+
+    def generate_title(self) ->str:
+        title = self.get_responce(pr.TITLE_GENERATION)
+        return title
+    
+    def generate_tags(self) ->list[str]:
+        tags:list[str] = []
+        for i in range(10):
+            tag = self.get_responce()
+            tags.append(tag)
+
+    def generate_description(self, title:str) ->str:
+        description = self.get_responce()
+        return description
 
 
 
 if __name__ == '__main__':
     elyza = Elyza()
-    elyza.get_responce("以下の要素を持つネット小説のプロットを25話分作成してください。「ゲーム転生、なろう系、男主人公=モブ、剣と魔法」") # Test
+    responce = elyza.get_responce("以下の要素を持つネット小説のプロットを25話分作成してください。「ゲーム転生、なろう系、男主人公=モブ、剣と魔法」") # Test
+    print(responce)
