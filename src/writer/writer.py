@@ -34,6 +34,7 @@ class Writer():
         category:int
         title = self.elyza.generate_title()
         newNovel = Novel(title=title)
+        newNovel.basicInfo.add_tags(self.elyza.generate_tags())
         newNovel.basicInfo.description = self.elyza.generate_description(newNovel.basicInfo.title)
 
 

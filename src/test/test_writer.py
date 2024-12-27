@@ -10,8 +10,13 @@ def test():
     
     start = time.time()
     title = elyza.generate_title()
-    print(time.time() - start)
+    print("title generation time: ", time.time() - start, "[s]")
     print(title)
+
+    start = time.time()
+    tags:list[str] = elyza.generate_tags()
+    print("tag generation time: ", time.time() - start, "[s]")
+    print(tags)
     
     # writer.save_test_story(title='test2',story_number=2,text='hogehogehoge\nfugafuga')
 

@@ -48,12 +48,23 @@ class BasicInfo():
         self.regulation = regulation
 
         # can't set these parameters in constructer
-        self.tags:list[str] = []
+        self.tags:list[str] = ['ゲーム転生', 'モブ']
         self.isPublished = False
 
 
     def add_tags(self, tag:str):
+        if self.tags.count >= 10:
+            return
         self.tags.append(tag)
+
+
+    def add_tags(self, tag:list[str]):
+        self.tags += tag
+        if self.tags.count <= 10:
+            return
+        for i in range(1, self.tags.count - 10):
+            self.tags.pop()
+
 
     def publish(self):
         self.isPublished = True
@@ -63,6 +74,10 @@ class BasicInfo():
 class Novel():
     basicInfo:BasicInfo
     stories:list[Story]
+
+    def __init__(self, title:str):
+        self.basicInfo = BasicInfo(title=title)
+        self.stories = list[Story]()
 
     def add_story(self, story:Story):
         self.stories.append(story)

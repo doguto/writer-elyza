@@ -12,7 +12,6 @@ class Elyza():
     
 
     def get_responce(self, input:str) ->str:
-        print(input)
         response = self.llm.create_chat_completion(
             messages=[
                 {
@@ -30,18 +29,35 @@ class Elyza():
 
 
     def generate_title(self) ->str:
-        title = self.get_responce(pr.TITLE_GENERATION)
+        responce = self.get_responce(pr.TITLE_GENERATION)
+        title = self.adjust_generated_word(responce)
         return title
     
     def generate_tags(self) ->list[str]:
         tags:list[str] = []
-        for i in range(10):
-            tag = self.get_responce()
+        for i in range(1, 7):
+            prompt = pr.TAG_GENERATION
+            prompt += 'なお、生成するタグは「'
+            for tag in tags:
+                prompt += tag
+                prompt += '」, 「'
+            prompt += '」以外のものにしてください。'
+            responce = self.get_responce(prompt)
+            tag = self.adjust_generated_word(responce)
             tags.append(tag)
+        return tags
 
     def generate_description(self, title:str) ->str:
         description = self.get_responce()
         return description
+
+
+    def adjust_generated_word(self, generatedWord:str) ->str:
+        if generatedWord[0] != '「':
+            return generatedWord
+        # print('adjust ', generatedWord)        
+        adjustedWord = generatedWord.strip('「」')
+        return adjustedWord
 
 
 
