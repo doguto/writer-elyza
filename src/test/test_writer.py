@@ -8,14 +8,17 @@ def test():
     writer = Writer()
     elyza = Elyza()
     
-    start = time.time()
+    titleGenerationStart = time.time()
     title = elyza.generate_title()
-    print("title generation time: ", time.time() - start, "[s]")
-    print(title)
+    titleGenerationTime = time.time()
 
-    start = time.time()
-    tags:list[str] = elyza.generate_tags()
-    print("tag generation time: ", time.time() - start, "[s]")
+    tagsGenerationStart = time.time()
+    tags:list[str] = elyza.generate_tags(title=title)
+
+    
+    print("title generation time: ", titleGenerationTime - titleGenerationStart, "[s]")
+    print(title)
+    print("tag generation time: ", time.time() - tagsGenerationStart, "[s]")
     print(tags)
     
     # writer.save_test_story(title='test2',story_number=2,text='hogehogehoge\nfugafuga')
