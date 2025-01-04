@@ -1,9 +1,12 @@
 
 class Story():
-    chapter = 0
+    chapter:str
     title = ''
     text:str = ''
     isPublished = False
+
+    def __init__(self, title:str=''):
+        self.title = title
 
     def add_text(self, text:str):
         self.text += '\n'
@@ -48,21 +51,21 @@ class BasicInfo():
         self.regulation = regulation
 
         # can't set these parameters in constructer
-        self.tags:list[str] = ['ゲーム転生', 'モブ']
+        self.tags:list[str] = []
         self.isPublished = False
 
 
     def add_tags(self, tag:str):
-        if self.tags.count >= 10:
+        if len(self.tags) >= 10:
             return
         self.tags.append(tag)
 
 
     def add_tags(self, tag:list[str]):
         self.tags += tag
-        if self.tags.count <= 10:
+        if len(self.tags) <= 10:
             return
-        for i in range(1, self.tags.count - 10):
+        for i in range(1, len(self.tags) - 10):
             self.tags.pop()
 
 

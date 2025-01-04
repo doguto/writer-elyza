@@ -44,9 +44,19 @@ class Elyza():
             tags.append(tag)
         return tags
 
-    def generate_description(self, title:str) ->str:
-        description = self.get_responce()
+    def generate_description(self, title:str, tags:list[str]) ->str:
+        description = self.get_responce(pr.generate_description_prompt(title=title, tags=tags), temperature=0.72)
         return description
+
+
+    def generate_story_titles(self, title:str, tags:list[str], description:str) ->list[str]:
+        storyTitles = self.get_responce(pr.generate_story_titles_prompt(title, tags, description), maxTokens=4096, temperature=0.82)
+        splitedTitles = storyTitles.splitlines()
+        adjusetdTitles = []
+        for title in splitedTitles:
+            adjusetdTitles.append(title.strip('0123456789.話第「」 '))
+        return adjusetdTitles
+
 
     def adjust_generated_word(self, generatedWord:str) ->str:
         if generatedWord[0] != '「':
