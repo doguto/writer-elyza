@@ -27,7 +27,7 @@ class AlphapolisOperaterPy():
         self.driver.find_element(By.XPATH, '//*[@id="sidebar"]/div[2]/ul/li[2]/a').click()
 
 
-    def make_new_novel(self, basicInfo:BasicInfo):
+    def make_new_novel(self, basicInfo: BasicInfo):
         # move to page to make new novel
         self.driver.find_element(By.XPATH, '//*[@id="main"]/div[1]/div[1]/a[1]').click()
         # write novel's info
@@ -66,7 +66,7 @@ class AlphapolisOperaterPy():
         self.driver.find_element(By.XPATH, '//*[@id="NovelMypageSaveForm"]/div[11]/div/input').click() 
 
 
-    def make_new_story(self, story:Story, chapter:str='', is_new_chapter:bool=False):
+    def make_new_story(self, story: Story, chapter='', is_new_chapter=False):
         self.driver.find_element(By.XPATH, '//*[@id="main"]/div[4]/a').click()
         self.driver.find_element(By.XPATH, '//*[@id="ContentBlockEpisodeNovelTitle"]').send_keys(story.title)
         self.driver.find_element(By.XPATH, '//*[@id="NovelEpisodeBodyId"]').send_keys(story.text)
@@ -97,7 +97,7 @@ class AlphapolisOperaterPy():
         self.driver.find_element(By.XPATH, '//*[@id="navbar"]/div/div[2]/div[3]/a').click()
 
 
-    def move_to_edit_page(self, basicInfo:BasicInfo):
+    def move_to_edit_page(self, basicInfo: BasicInfo):
         for i in range(2, 1000):  # 1000 is just a large number.
             titleElement = self.driver.find_element(By.XPATH, f'//*[@id="main"]/div[3]/div[{i}]/div[3]/div[1]/h2')
             if not titleElement.text == basicInfo.title:

@@ -2,13 +2,15 @@
 class Story():
     chapter:str
     title = ''
+    story_number:int
     text:str = ''
     isPublished = False
 
-    def __init__(self, title:str=''):
+    def __init__(self, title='', story_number=-1):
         self.title = title
+        self.story_number = story_number
 
-    def add_text(self, text:str):
+    def add_text(self, text: str):
         self.text += '\n'
         self.text += text
 
@@ -51,17 +53,17 @@ class BasicInfo():
         self.regulation = regulation
 
         # can't set these parameters in constructer
-        self.tags:list[str] = []
+        self.tags = list[str]()
         self.isPublished = False
 
 
-    def add_tags(self, tag:str):
+    def add_tags(self, tag: str):
         if len(self.tags) >= 10:
             return
         self.tags.append(tag)
 
 
-    def add_tags(self, tag:list[str]):
+    def add_tags(self, tag: list[str]):
         self.tags += tag
         if len(self.tags) <= 10:
             return
@@ -78,10 +80,11 @@ class Novel():
     basicInfo:BasicInfo
     stories:list[Story]
 
-    def __init__(self, title:str):
+    def __init__(self, title: str):
         self.basicInfo = BasicInfo(title=title)
         self.stories = list[Story]()
 
-    def add_story(self, story:Story):
+    def add_story(self, story: Story):
+        story.story_number = len(self.stories) + 1
         self.stories.append(story)
 
