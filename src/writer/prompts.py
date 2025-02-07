@@ -14,9 +14,9 @@ TITLE_GENERATION = (
 def generate_tag_prompt(title: str, tags: list[str]) ->str:
     tagStr = enStr_tags(tags)
     prompt = (
-        f'なろう系の小説を作成しようとしています。'
-        'タイトルは{title}です。'
-        '{tagStr}というタグに合うような、なろう系の単語を1つ生成してください。'
+        'なろう系の小説を作成しようとしています。'
+        f'タイトルは{title}です。'
+        f'{tagStr}というタグに合うような、なろう系の単語を1つ生成してください。'
         'なお、余計な返答や鍵括弧、整理のための数字等は不要です。'
     )
     return prompt
@@ -48,9 +48,9 @@ def generate_story_titles_prompt(title: str, tags: list[str], description: str, 
 def get_story_generation_prompt(novel_title: str, story_title: str, story_number: int, last_story: str, word_amount=5000) ->str:
     prompt = (
         f'なろう系の小説を作成しています。'
-        '小説のタイトルは{novel_title}で、現在第{story_number}話を作成しようとしています。'
-        '前の話の内容は「{last_story}」でした。'
-        '話の題名は「{story_title}」です。'
-        '{word_amount}文字程度でこの話の文章を生成してください。'
+        f'小説のタイトルは{novel_title}で、現在第{story_number}話を作成しようとしています。'
+        f'前の話の内容は「{last_story}」でした。'
+        f'話の題名は「{story_title}」です。'
+        f'{word_amount}文字程度でこの話の文章を生成してください。'
     )
     return prompt
