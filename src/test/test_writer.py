@@ -2,34 +2,34 @@ import time
 import sys
 sys.path.append('../')
 from writer.writer import Writer
-from writer.elyza import Elyza
+from writer.ai import Elyza, ChatGPT
 
 def test():
     writer = Writer()
-    elyza = Elyza()
+    ai = ChatGPT()
     
     titleGenerationStart = time.time()
-    title = elyza.generate_title()
+    title = ai.generate_title()
     titleGenerationTime = time.time()
     print('succeeded in title generation.\n')
 
     tagsGenerationStart = time.time()
-    tags:list[str] = elyza.generate_tags(title=title)
+    tags:list[str] = ai.generate_tags(title=title)
     tagsGenerationTime = time.time()
     print('succeeded in tags generations.\n')
 
     descriptionGenerationStart = time.time()
-    description:str = elyza.generate_description(title=title, tags=tags)
+    description:str = ai.generate_description(title=title, tags=tags)
     descriptionGenerationTime = time.time()
     print('succeeded in description generation.\n')
 
     plotStart = time.time()
-    plot = elyza.generate_story_titles(title, tags, description)
+    plot = ai.generate_story_titles(title, tags, description)
     plotFin = time.time()
     print('succeeded in titles generations.\n')
 
     story_start = time.time()
-    story = elyza.generate_story(title, plot[0], 1, description)
+    story = ai.generate_story(title, plot[0], 1, description)
     story_fin = time.time()
     print('succeeded in story generation.\n')
 

@@ -1,30 +1,30 @@
 import os
 import sys
 sys.path.append('../')
-from writer.elyza import Elyza
+from writer.ai import Elyza, ChatGPT, AI
 from novel.novel import Novel
 
 
 class Writer():
-    elyza:Elyza
-    novels:list[Novel]
+    ai: AI
+    novels: list[Novel]
 
     def __init__(self):
-        self.elyza = Elyza()
+        self.ai = ChatGPT()
         self.novels = []
     
 
     def make_new_novel(self) ->Novel:
-        title = self.elyza.generate_title()
+        title = self.ai.generate_title()
         newNovel = Novel(title)
-        newNovel.basicInfo.add_tags(self.elyza.generate_tags(title))
-        newNovel.basicInfo.description = self.elyza.generate_description(newNovel.basicInfo.title, newNovel.basicInfo.tags)
+        newNovel.basicInfo.add_tags(self.ai.generate_tags(title))
+        newNovel.basicInfo.description = self.ai.generate_description(newNovel.basicInfo.title, newNovel.basicInfo.tags)
         self.novels.append(newNovel)
         return newNovel
 
 
     def make_plot(self, novel:Novel):
-        storyTitles = self.elyza.generate_story_titles(novel.basicInfo.title, novel.basicInfo.tags, novel.basicInfo.description)
+        storyTitles = self.ai.generate_story_titles(novel.basicInfo.title, novel.basicInfo.tags, novel.basicInfo.description)
 
     def save_story(self, title: str, story_number: int, text: str):
         title_dir = f'../../works/actual/{title}'
